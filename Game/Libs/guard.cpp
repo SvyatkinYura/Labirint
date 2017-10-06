@@ -1,3 +1,5 @@
+#include "TXLib.h"
+
 struct Guard
 {
     double x, y;
