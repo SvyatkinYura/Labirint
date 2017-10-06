@@ -1,6 +1,5 @@
-﻿# Labirint
+# Labirint
 Лабиринт
-
 
 Если смотреть по символам:
 # - стена
@@ -15,3 +14,11 @@ g - охранник. Главное не попасться на глаза
 
 По игре:
 Библиотеки лежат в Libs, картинки в Pics, уровни в Levels
+=======
+
+Задачи
+https://docs.google.com/spreadsheets/d/150uVu_P7PLnkMCQllXHaGMlw9F4eqE6OkEtfPqxz0M4/edit?usp=sheets_home
+
+Дока с описанием
+https://docs.google.com/document/d/1IsYv2pCQprDsOhaTeJfGYetIpJYA-eyqsXWbKVVubj0/edit
+
