@@ -1,3 +1,6 @@
+#include "TXLib.h"
+#include "corvo.cpp"
+
 struct Barrel
 {
     double x, y;
