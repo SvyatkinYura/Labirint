@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "dirent.h"
 #include "TXLib.h"
+#include <cstring>
 #include "Libs\\corvo.cpp"
 #include "Libs\\guard.cpp"
 #include "Libs\\trap.cpp"
@@ -23,18 +24,20 @@ int main()
 
     DIR *mydir;
     struct dirent *filename;
-    char *dirname = "D:\\CodeBlocks\\projects\\2017-2018\\lab ver1\\Labirint-master\\Game\\Levels\\";
+    char *dirname = "Levels\\";
     printf("%s\n", dirname);
 
     if ((mydir = opendir (dirname)) != NULL)
     {
         while ((filename = readdir (mydir)) != NULL)
         {
-            printf("%s\n", filename->d_name);
-            if
-           // createLevel(l0, filename->d_name);
-            //playLevel(l0);
-            //destroyLevel(l0);
+            if ((strcmp(".", filename->d_name) !=0) and (strcmp("..", filename->d_name) != 0))
+            {
+                printf("%s\n", filename->d_name);
+                createLevel(l0, filename->d_name);
+                playLevel(l0);
+                destroyLevel(l0);
+            }
         }
         closedir (mydir);
     }
@@ -42,8 +45,4 @@ int main()
     {
           perror ("no directory");
     }
-
-
-
-
 }
