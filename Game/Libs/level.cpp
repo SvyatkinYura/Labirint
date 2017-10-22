@@ -112,6 +112,7 @@ filename = dir + filename;
                 {
                     l.guards[l.guardsCount].y = 40 * i + 20;
                     l.guards[l.guardsCount].x = 40 * j + 20;
+                    l.guards[l.guardsCount].texture = txLoadImage("Pictures\\GuardText.bmp");
                     l.guards[l.guardsCount].isDead = 0;
                     l.guardsCount++;
                 }

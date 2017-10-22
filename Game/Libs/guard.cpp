@@ -7,6 +7,7 @@ struct Guard
     int moveMode; //0 - стоит, 1 - ходит по горизонтали, 2 - ходит по вертикали
     double v, coord1, coord2; //скорость и границы движения
     int isDead; //0 - жив, 1 - мёртв
+    HDC texture;
 };
 
 void drawGuard(Guard g)
@@ -16,6 +17,7 @@ void drawGuard(Guard g)
         txSetColor(TX_ORANGE);
         txSetFillColor(TX_ORANGE);
         txCircle (g.x, g.y, 20);
+        txTransparentBlt(txDC(), g.x - 20, g.y - 20, 40, 40, g.texture, 0, 0, RGB(255, 255, 255));
 
         txSetColor(TX_YELLOW);
         txSetFillColor(TX_YELLOW);
