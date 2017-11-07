@@ -1,10 +1,22 @@
 #include <iostream>
 #include "Libs\\TXLib.h"
 #include "Libs\\wall.cpp"
-#include "Libs\\Menu.cpp"
 #include "Libs\\road.cpp"
 using namespace std;
 
+struct Button {
+    int x,y;
+    const char* text;
+};
+
+void dButton(Button b)
+{
+    txSetColor(RGB(0, 0, 0), 1);
+    txSetFillColor(RGB(255, 255, 255));
+    txSelectFont("Times New Roman", 25);
+    txRectangle(b.x, b.y, b.x + 150 , b.y + 50);
+    txTextOut(b.x + 10, b.y + 15, b.text);
+}
 
 void drawMouseWall(int x, int y)
 {
@@ -25,8 +37,6 @@ int main()
 {
     txCreateWindow(800, 600);
 
-    massButt();
-
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
@@ -45,7 +55,7 @@ int main()
         txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
         txSelectFont("Times New Roman", 25);
-        for (int Button_number = 0; Button_number < KOLICHESTVO_KNOPOK; Button_number++)
+        for (int Button_number = 0; Button_number < 9; Button_number++)
         {
             dButton(b[Button_number]);
             if (txMouseButtons() & 1
