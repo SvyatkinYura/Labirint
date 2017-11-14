@@ -27,6 +27,12 @@ int main()
 
     massButt();
 
+    HDC kart = NULL;
+
+    int x;
+    int y;
+    bool risovat = false;
+
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
@@ -40,7 +46,6 @@ int main()
         Road r[1];
 
         r[0] = {300, 300};
-
 
         txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
@@ -58,13 +63,29 @@ int main()
                 {
                     drawMouseWall(txMouseX(), txMouseY());
                     drawWall(w[0]);
+                    kart = txLoadImage(""); // H Y )|( H A  K A P T U H K A
                 }
                 if (Button_number == 1)
                 {
                     drawMouseRoad(txMouseX(), txMouseY());
                     drawRoad(r[0]);
+                    kart = txLoadImage(""); // H Y )|( H A  K A P T U H K A
                 }
             }
+        }
+
+        if(txMouseButtons() & 1
+           && txMouseX() > 150)
+        {
+            
+            risovat = true;
+            x = txMouseX();
+            y = txMouseY();
+        }
+
+        if (risovat)
+        {
+            txBitBlt(txDC(),x,y,800,620,kart,0,0);
         }
 
         txSleep (10);
@@ -72,4 +93,3 @@ int main()
     }
     return 0;
 }
-
