@@ -3,23 +3,20 @@
 #include "Libs\\wall.cpp"
 #include "Libs\\Menu.cpp"
 #include "Libs\\road.cpp"
-using namespace std;
-
 
 void drawMouseWall(int x, int y)
 {
     txSetColor(RGB(128, 128, 128));
     txSetFillColor(RGB(128, 128, 128));
-    txRectangle(x - 22, y - 22, x + 22, y + 22);
+    txRectangle(x - SHIRINA_STENI, y - SHIRINA_STENI, x + SHIRINA_STENI, y + SHIRINA_STENI);
 }
 
 void drawMouseRoad(int x, int y)
 {
     txSetColor(RGB (100, 0, 0));
     txSetFillColor(RGB (100, 0, 0));
-    txRectangle(x - 20, y - 20, x + 20, y + 20);
+    txRectangle(x - SHIRINA_DOROGI, y - SHIRINA_DOROGI, x + SHIRINA_DOROGI, y + SHIRINA_DOROGI);
 }
-
 
 int main()
 {
@@ -55,9 +52,9 @@ int main()
             dButton(b[Button_number]);
             if (txMouseButtons() & 1
             && txMouseX() >= b[Button_number].x
-            && txMouseX() <= b[Button_number].x + 150
+            && txMouseX() <= b[Button_number].x + SHIRINA_KNOPKI
             && txMouseY() >= b[Button_number].y
-            && txMouseY() <= b[Button_number].y + 50)
+            && txMouseY() <= b[Button_number].y + VISOTA_KNOPKI)
             {
                 if (Button_number == 0)
                 {
@@ -75,9 +72,8 @@ int main()
         }
 
         if(txMouseButtons() & 1
-           && txMouseX() > 150)
-        {
-            
+           && txMouseX() > SHIRINA_KNOPKI)
+        {            
             risovat = true;
             x = txMouseX();
             y = txMouseY();

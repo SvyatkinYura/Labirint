@@ -13,7 +13,7 @@ void dButton(Button b)
     txSetColor(RGB(0, 0, 0), 1);
     txSetFillColor(RGB(255, 255, 255));
     txSelectFont("Times New Roman", 25);
-    txRectangle(b.x, b.y, b.x + 150 , b.y + 50);
+    txRectangle(b.x, b.y, b.x + SHIRINA_KNOPKI , b.y + VISOTA_KNOPKI);
     txTextOut(b.x + 10, b.y + 15, b.text);
 }
 
