@@ -74,7 +74,7 @@ int main()
 
         if(txMouseButtons() & 1
            && txMouseX() > SHIRINA_KNOPKI)
-        {
+        {            
             risovat = true;
             x = txMouseX();
             y = txMouseY();
