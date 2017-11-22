@@ -4,19 +4,20 @@
 #include "Libs\\Menu.cpp"
 #include "Libs\\road.cpp"
 #include "Libs\\massivs.cpp"
+#include "Libs\\const.cpp"
 
 void drawMouseWall(int x, int y)
 {
     txSetColor(RGB(128, 128, 128));
     txSetFillColor(RGB(128, 128, 128));
-    txRectangle(x - SHIRINA_STENI, y - SHIRINA_STENI, x + SHIRINA_STENI, y + SHIRINA_STENI);
+    txRectangle(x - SHIRINA_OBJ, y - SHIRINA_OBJ, x + SHIRINA_OBJ, y + SHIRINA_OBJ);
 }
 
 void drawMouseRoad(int x, int y)
 {
     txSetColor(RGB (100, 0, 0));
     txSetFillColor(RGB (100, 0, 0));
-    txRectangle(x - SHIRINA_DOROGI, y - SHIRINA_DOROGI, x + SHIRINA_DOROGI, y + SHIRINA_DOROGI);
+    txRectangle(x - SHIRINA_OBJ, y - SHIRINA_OBJ, x + SHIRINA_OBJ, y + SHIRINA_OBJ);
 }
 
 int main()
