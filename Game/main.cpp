@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "dirent.h"
-#include "TXLib.h"
+#include "Libs\\TXLib.h"
 #include <cstring>
 #include "Libs\\corvo.cpp"
 #include "Libs\\guard.cpp"
