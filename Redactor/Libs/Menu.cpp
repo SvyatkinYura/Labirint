@@ -22,13 +22,13 @@ void dButton(Button b)
 void massButt()
 {
     b[0] = {0, 0,   "wall", "#", txLoadImage("stenka.bmp")};
-    b[1] = {0, 50,  "road", ".", txLoadImage("doroga.bmp")};
-    b[2] = {0, 100, "hero", "h", txLoadImage("corvo.bmp")};
-    b[3] = {0, 150, "knife", "s", txLoadImage("noj.bmp")};
-    b[4] = {0, 200, "ventilation", "v", txLoadImage("vint.bmp")};
-    b[5] = {0, 250, "barrel", "b", txLoadImage("barrel.bmp")};
-    b[6] = {0, 300, "trap", "t", txLoadImage("trap.bmp")};
-    b[7] = {0, 350, "button", "B", txLoadImage("button.bmp")};
-    b[8] = {0, 400, "guard", "g", txLoadImage("guard.bmp")};
-    b[9] = {0, 450, "void", "@", txLoadImage("void.bmp")};
+    b[1] = {0, 40,  "road", ".", txLoadImage("doroga.bmp")};
+    b[2] = {0, 80, "hero", "h", txLoadImage("corvo.bmp")};
+    b[3] = {0, 120, "knife", "s", txLoadImage("noj.bmp")};
+    b[4] = {0, 160, "ventilation", "v", txLoadImage("vint.bmp")};
+    b[5] = {0, 200, "barrel", "b", txLoadImage("barrel.bmp")};
+    b[6] = {0, 240, "trap", "t", txLoadImage("trap.bmp")};
+    b[7] = {0, 280, "button", "B", txLoadImage("button.bmp")};
+    b[8] = {0, 320, "guard", "g", txLoadImage("guard.bmp")};
+    b[9] = {0, 360, "void", "@", txLoadImage("void.bmp")};
 }
