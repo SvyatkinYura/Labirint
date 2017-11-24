@@ -7,7 +7,7 @@ struct Trap
 
 void drawTrap(Trap t)
 {
-    txTransparentBlt(txDC(), t.x - 20, t.y - 20, 40, 40, t.texture, 0, 0, RGB(255, 255, 255));
+    txTransparentBlt(txDC(), t.x - SHIRINA_OBJ, t.y - SHIRINA_OBJ, 40, 40, t.texture, 0, 0, RGB(255, 255, 255));
 }
 
 void actTrap(Trap &t, Corvo &c)
