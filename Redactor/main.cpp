@@ -24,27 +24,17 @@ int main()
 {
     txCreateWindow(800, 600);
 
+    kartinka pics[100];
+    pics[0].picture = NULL;
+    pics[0].risovat = false;
+
     massButt();
-
-    HDC kart = NULL;
-
-    int x;
-    int y;
-    bool risovat = false;
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
         txSetFillColor(TX_BLACK);
         txClear();
-
-        Wall w[1];
-
-        w[0] = {200, 200};
-
-        Road r[1];
-
-        r[0] = {300, 300};
 
         txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
@@ -60,15 +50,11 @@ int main()
             {
                 if (Button_number == 0)
                 {
-                    drawMouseWall(txMouseX(), txMouseY());
-                    drawWall(w[0]);
-                    //kart = txLoadImage(""); // H Y )|( H A  K A P T U H K A
+                    pics[0].picture = txLoadImage("stenka.bmp");
                 }
-                if (Button_number == 1)
+                else if (Button_number == 1)
                 {
-                    drawMouseRoad(txMouseX(), txMouseY());
-                    drawRoad(r[0]);
-                    //kart = txLoadImage(""); // H Y )|( H A  K A P T U H K A
+                    pics[0].picture = txLoadImage("doroga.bmp");
                 }
             }
         }
@@ -76,14 +62,16 @@ int main()
         if(txMouseButtons() & 1
            && txMouseX() > SHIRINA_KNOPKI)
         {
-            risovat = true;
-            x = txMouseX();
-            y = txMouseY();
+            pics[0].risovat = true;
+            pics[0].x = txMouseX();
+            pics[0].y = txMouseY();
+            pics[0].height = 150;
+            pics[0].width = 150;
         }
 
-        if (risovat)
+        if (pics[0].risovat)
         {
-            txBitBlt(txDC(),x,y,800,620,kart,0,0);
+            txBitBlt(txDC(), pics[0].x, pics[0].y, pics[0].width, pics[0].height, pics[0].picture, 0, 0);
         }
 
         txSleep (10);

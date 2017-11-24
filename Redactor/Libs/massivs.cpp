@@ -6,5 +6,6 @@ struct kartinka
     int y;
     int height;
     HDC picture;
-    int wight;
+    bool risovat;
+    int width;
 };

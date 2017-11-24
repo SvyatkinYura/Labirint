@@ -30,5 +30,5 @@ void massButt()
     b[6] = {0, 300, "trap", "t", txLoadImage("trap.bmp")};
     b[7] = {0, 350, "button", "B", txLoadImage("button.bmp")};
     b[8] = {0, 400, "guard", "g", txLoadImage("guard.bmp")};
-    b[9] = {0, 400, "void", "@", txLoadImage("void.bmp")};
+    b[9] = {0, 450, "void", "@", txLoadImage("void.bmp")};
 }
