@@ -11,7 +11,7 @@ void drawSword(Sword s)
        txSetFillColor(TX_WHITE);
        txCircle(s.x, s.y, 20);*/
     if(s.has == 0)
-        txTransparentBlt(txDC(), s.x - 20, s.y - 20, 40, 40, s.texture, 0, 0, RGB(255, 255, 255));
+        txTransparentBlt(txDC(), s.x - SHIRINA_OBJ, s.y - SHIRINA_OBJ, 40, 40, s.texture, 0, 0, RGB(255, 255, 255));
 }
 
 void actSword(Sword &s, Corvo &c)

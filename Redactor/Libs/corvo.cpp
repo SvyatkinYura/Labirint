@@ -14,8 +14,8 @@ void drawCorvo(Corvo c)
 {
     txSetColor(TX_BLACK);
     txSetFillColor(TX_BLACK);
-    txCircle(c.x, c.y, 20);
-    txTransparentBlt(txDC(), c.x - 20, c.y - 20, 50, 50, c.texture, 0, 0, RGB(255, 255, 255));
+    txCircle(c.x, c.y, SHIRINA_OBJ);
+    txTransparentBlt(txDC(), c.x - SHIRINA_OBJ, c.y - SHIRINA_OBJ, 50, 50, c.texture, 0, 0, RGB(255, 255, 255));
     if (c.hasSword)
     {
         txRectangle(0, 0, 10, 10);
