@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 #include "Libs\\TXLib.h"
 #include "Libs\\wall.cpp"
 #include "Libs\\Menu.cpp"
@@ -23,10 +24,21 @@ void drawMouseRoad(int x, int y)
 int main()
 {
     txCreateWindow(800, 600);
+    int nomer_kartinki = 1;
+    double pictureX;
+    double pictureY;
 
-    kartinka pics[100];
-    pics[0].picture = NULL;
-    pics[0].risovat = false;
+    int picsNumber = 240;
+
+    kartinka pics[picsNumber];
+    for (int nomer = 0; nomer < picsNumber; nomer++)
+    {
+        pics[nomer].picture = NULL;
+        pics[nomer].risovat = false;
+    }
+
+    pics[0] = {200, 200, 40, 40, txLoadImage("stenka.bmp"), true};
+
 
     massButt();
 
@@ -50,32 +62,62 @@ int main()
             {
                 if (Button_number == 0)
                 {
-                    pics[0].picture = txLoadImage("stenka.bmp");
+                    for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
+                    {
+                        pics[nomer].picture = txLoadImage("stenka.bmp");
+                    }
                 }
                 else if (Button_number == 1)
                 {
-                    pics[0].picture = txLoadImage("doroga.bmp");
+                    for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
+                    {
+                        pics[nomer].picture = txLoadImage("doroga.bmp");
+                    }
                 }
             }
         }
 
-        if(txMouseButtons() & 1
-           && txMouseX() > SHIRINA_KNOPKI)
-        {
-            pics[0].risovat = true;
-            pics[0].x = txMouseX();
-            pics[0].y = txMouseY();
-            pics[0].height = 150;
-            pics[0].width = 150;
-        }
 
-        if (pics[0].risovat)
+        if(txMouseButtons() & 1
+           && txMouseX() > SHIRINA_KNOPKI/* && txGetPixel(txMouseX(), txMouseY()) == TX_BLACK*/)
         {
-            txBitBlt(txDC(), pics[0].x, pics[0].y, pics[0].width, pics[0].height, pics[0].picture, 0, 0);
+            pictureX = txMouseX();
+            pictureY = txMouseY();
+
+            while (!(floor(pictureX/40)==pictureX/40))
+            {
+                pictureX--;
+            }
+
+            while (!(floor(pictureY/40)==pictureY/40))
+            {
+                pictureY--;
+            }
+
+            pics[nomer_kartinki].risovat = true;
+            pics[nomer_kartinki].x = pictureX;
+            pics[nomer_kartinki].y = pictureY;
+            pics[nomer_kartinki].height = 40;
+            pics[nomer_kartinki].width = 40;
+
+            nomer_kartinki++;
+            txSleep (10);
+        }
+        for (int nomer = 0; nomer < picsNumber; nomer++)
+        {
+            if (pics[nomer].risovat)
+            {
+                txBitBlt(txDC(), pics[nomer].x, pics[nomer].y, pics[nomer].width, pics[nomer].height, pics[nomer].picture, 0, 0);
+            }
         }
 
         txSleep (10);
         txEnd();
+    }
+
+    for (int nomer = 0; nomer < 100; nomer++)
+    {
+        txDeleteDC (pics[nomer].picture);
     }
     return 0;
 }
