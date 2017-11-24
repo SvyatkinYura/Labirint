@@ -1,10 +1,10 @@
 #include "TXLib.h"
 
-struct massiv
+struct kartinka
 {
-int x;
-int y;
-int heigh;
-HDC picture;
-int wight;
-} ;
+    int x;
+    int y;
+    int height;
+    HDC picture;
+    int wight;
+};
