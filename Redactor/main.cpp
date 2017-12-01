@@ -28,7 +28,7 @@ int main()
     double pictureX;
     double pictureY;
 
-    int picsNumber = 240;
+    int picsNumber = 2000;
 
     kartinka pics[picsNumber];
     for (int nomer = 0; nomer < picsNumber; nomer++)
@@ -41,6 +41,7 @@ int main()
 
 
     massButt();
+    HDC pic;
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -60,20 +61,12 @@ int main()
             && txMouseY() >= b[Button_number].y
             && txMouseY() <= b[Button_number].y + VISOTA_KNOPKI)
             {
-                if (Button_number == 0)
+                pic = b[Button_number].kartinka;
+                for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
                 {
-                    for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
-                    {
-                        pics[nomer].picture = txLoadImage("stenka.bmp");
-                    }
+                    pics[nomer].picture = pic;
                 }
-                else if (Button_number == 1)
-                {
-                    for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
-                    {
-                        pics[nomer].picture = txLoadImage("doroga.bmp");
-                    }
-                }
+
             }
         }
 
