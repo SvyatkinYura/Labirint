@@ -36,9 +36,7 @@ int main()
         pics[nomer].picture = NULL;
         pics[nomer].risovat = false;
     }
-
-    pics[0] = {200, 200, 40, 40, txLoadImage("stenka.bmp"), true};
-
+    HDC pic;
 
     massButt();
 
@@ -62,24 +60,23 @@ int main()
             {
                 if (Button_number == 0)
                 {
-                    for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
-                    {
-                        pics[nomer].picture = txLoadImage("stenka.bmp");
-                    }
+                    pic = txLoadImage("stenka.bmp");
                 }
                 else if (Button_number == 1)
                 {
-                    for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
-                    {
-                        pics[nomer].picture = txLoadImage("doroga.bmp");
-                    }
+                    pic = txLoadImage("doroga.bmp");
+                }
+
+                for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
+                {
+                    pics[nomer].picture = pic;
                 }
             }
         }
 
 
         if(txMouseButtons() & 1
-           && txMouseX() > SHIRINA_KNOPKI/* && txGetPixel(txMouseX(), txMouseY()) == TX_BLACK*/)
+           && txMouseX() > SHIRINA_KNOPKI)
         {
             pictureX = txMouseX();
             pictureY = txMouseY();
@@ -94,20 +91,37 @@ int main()
                 pictureY--;
             }
 
-            pics[nomer_kartinki].risovat = true;
             pics[nomer_kartinki].x = pictureX;
             pics[nomer_kartinki].y = pictureY;
             pics[nomer_kartinki].height = 40;
             pics[nomer_kartinki].width = 40;
 
-            nomer_kartinki++;
+
+            bool many = false;
+
+            for (int nomer = 0; nomer < nomer_kartinki; nomer++)
+            {
+                if ((pics[nomer_kartinki].x == pics[nomer].x &&
+                     pics[nomer_kartinki].y == pics[nomer].y))
+                {
+                    many = true;
+                }
+            }
+
+            if (!many)
+            {
+                pics[nomer_kartinki].risovat = true;
+            }
+
             txSleep (10);
         }
+
         for (int nomer = 0; nomer < picsNumber; nomer++)
         {
             if (pics[nomer].risovat)
             {
                 txBitBlt(txDC(), pics[nomer].x, pics[nomer].y, pics[nomer].width, pics[nomer].height, pics[nomer].picture, 0, 0);
+                nomer_kartinki = nomer + 1;
             }
         }
 
@@ -115,7 +129,7 @@ int main()
         txEnd();
     }
 
-    for (int nomer = 0; nomer < 100; nomer++)
+    for (int nomer = 0; nomer < picsNumber; nomer++)
     {
         txDeleteDC (pics[nomer].picture);
     }
