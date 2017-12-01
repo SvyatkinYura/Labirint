@@ -1,4 +1,5 @@
 #include "const.cpp"
+
 struct Wall
 {
     double x, y;

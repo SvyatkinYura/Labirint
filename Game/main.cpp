@@ -13,6 +13,7 @@
 #include "Libs\\wall.cpp"
 #include "Libs\\voidzone.cpp"
 #include "Libs\\level.cpp"
+#include "Libs\\const.cpp"
 
 Level l0;
 
