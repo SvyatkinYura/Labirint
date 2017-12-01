@@ -1,3 +1,4 @@
+#pragma once
 #include "const.cpp"
 
 struct Corvo
