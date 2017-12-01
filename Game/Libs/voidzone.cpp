@@ -11,11 +11,11 @@ void drawVoidzone(Voidzone v)
 {
     if (v.voidactive == 1)
     {
-        txTransparentBlt(txDC(), v.x - 20, v.y - 20, 40, 40, v.textureActive, 0, 0, RGB(255, 255, 255));
+        txTransparentBlt(txDC(), v.x - SHIRINA_OBJ, v.y - SHIRINA_OBJ, 40, 40, v.textureActive, 0, 0, RGB(255, 255, 255));
     }
     else
     {
-        txTransparentBlt(txDC(), v.x - 20, v.y - 20, 40, 40, v.textureDesactive, 0, 0, RGB(255, 255, 255));
+        txTransparentBlt(txDC(), v.x - SHIRINA_OBJ, v.y - SHIRINA_OBJ, 40, 40, v.textureDesactive, 0, 0, RGB(255, 255, 255));
     }
 }
 void actVoidzone(Voidzone &v, Corvo &c)
@@ -26,7 +26,7 @@ void actVoidzone(Voidzone &v, Corvo &c)
         double dx = c.x - v.x;
         double dy = c.y - v.y;
         double distance = sqrt(dx * dx + dy * dy); //теорема Пифагора
-        if (distance < 20)
+        if (distance < SHIRINA_OBJ)
         {
             c.x = c.respX;
             c.y = c.respY;
