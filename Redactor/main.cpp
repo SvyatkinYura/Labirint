@@ -28,17 +28,18 @@ int main()
     double pictureX;
     double pictureY;
 
-    int picsNumber = 240;
+    int picsNumber = 2000;
 
+    //Init
     kartinka pics[picsNumber];
     for (int nomer = 0; nomer < picsNumber; nomer++)
     {
         pics[nomer].picture = NULL;
         pics[nomer].risovat = false;
     }
-    HDC pic;
 
     massButt();
+    HDC pic;
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -52,53 +53,31 @@ int main()
         for (int Button_number = 0; Button_number < KOLICHESTVO_KNOPOK; Button_number++)
         {
             dButton(b[Button_number]);
+          
+            //Saving pic into buffer
             if (txMouseButtons() & 1
             && txMouseX() >= b[Button_number].x
             && txMouseX() <= b[Button_number].x + SHIRINA_KNOPKI
             && txMouseY() >= b[Button_number].y
             && txMouseY() <= b[Button_number].y + VISOTA_KNOPKI)
             {
-                if (Button_number == 0)
-                {
-                    pic = txLoadImage("stenka.bmp");
-                }
-                else if (Button_number == 1)
-                {
-                    pic = txLoadImage("doroga.bmp");
-                }
-
                 for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
                 {
-                    pics[nomer].picture = pic;
+                    pics[nomer].picture = b[Button_number].kartinka;
                 }
             }
         }
 
 
-        if(txMouseButtons() & 1
-           && txMouseX() > SHIRINA_KNOPKI)
+        if(txMouseButtons() & 1  && txMouseX() > SHIRINA_KNOPKI)
         {
-            pictureX = txMouseX();
-            pictureY = txMouseY();
-
-            while (!(floor(pictureX/40)==pictureX/40))
-            {
-                pictureX--;
-            }
-
-            while (!(floor(pictureY/40)==pictureY/40))
-            {
-                pictureY--;
-            }
-
-            pics[nomer_kartinki].x = pictureX;
-            pics[nomer_kartinki].y = pictureY;
+            pics[nomer_kartinki].x = round (txMouseX() / 40) * 40;
+            pics[nomer_kartinki].y = round (txMouseY() / 40) * 40;
             pics[nomer_kartinki].height = 40;
             pics[nomer_kartinki].width = 40;
 
-
+            //Checking if here exists another picture
             bool many = false;
-
             for (int nomer = 0; nomer < nomer_kartinki; nomer++)
             {
                 if ((pics[nomer_kartinki].x == pics[nomer].x &&
