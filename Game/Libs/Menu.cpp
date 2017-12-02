@@ -8,7 +8,7 @@ struct Button {
     HDC kartinka;
 };
 
-Button b[KOLICHESTVO_KNOPOK];
+Button knopki[KOLICHESTVO_KNOPOK];
 
 void dButton(Button b)
 {
@@ -21,14 +21,14 @@ void dButton(Button b)
 
 void massButt()
 {
-    b[0] = {0, 0,   "wall", "#", txLoadImage("Pictures\\stenka.bmp")};
-    b[1] = {0, 40,  "road", ".", txLoadImage("Pictures\\doroga.bmp")};
-    b[2] = {0, 80, "hero", "h", txLoadImage("Pictures\\corvo.bmp")};
-    b[3] = {0, 120, "knife", "s", txLoadImage("Pictures\\noj.bmp")};
-    b[4] = {0, 160, "ventilation", "v", txLoadImage("Pictures\\vint.bmp")};
-    b[5] = {0, 200, "barrel", "b", txLoadImage("Pictures\\barrel.bmp")};
-    b[6] = {0, 240, "trap", "t", txLoadImage("Pictures\\trap.bmp")};
-    b[7] = {0, 280, "button", "B", txLoadImage("Pictures\\button.bmp")};
-    b[8] = {0, 320, "guard", "g", txLoadImage("Pictures\\guard.bmp")};
-    b[9] = {0, 360, "void", "@", txLoadImage("Pictures\\void.bmp")};
+    knopki[0] = {0, 0,   "wall", "#", txLoadImage("Pictures\\stenka.bmp")};
+    knopki[1] = {0, 40,  "road", ".", txLoadImage("Pictures\\doroga.bmp")};
+    knopki[2] = {0, 80, "hero", "h", txLoadImage("Pictures\\corvo.bmp")};
+    knopki[3] = {0, 120, "knife", "s", txLoadImage("Pictures\\noj.bmp")};
+    knopki[4] = {0, 160, "ventilation", "v", txLoadImage("Pictures\\vint.bmp")};
+    knopki[5] = {0, 200, "barrel", "b", txLoadImage("Pictures\\barrel.bmp")};
+    knopki[6] = {0, 240, "trap", "t", txLoadImage("Pictures\\trap.bmp")};
+    knopki[7] = {0, 280, "button", "B", txLoadImage("Pictures\\button.bmp")};
+    knopki[8] = {0, 320, "guard", "g", txLoadImage("Pictures\\guard.bmp")};
+    knopki[9] = {0, 360, "void", "@", txLoadImage("Pictures\\void.bmp")};
 }

@@ -7,19 +7,13 @@
 #include "Libs\\massivs.cpp"
 #include "Libs\\const.cpp"
 
-void drawMouseWall(int x, int y)
-{
-    txSetColor(RGB(128, 128, 128));
-    txSetFillColor(RGB(128, 128, 128));
-    txRectangle(x - SHIRINA_OBJ, y - SHIRINA_OBJ, x + SHIRINA_OBJ, y + SHIRINA_OBJ);
-}
 
-void drawMouseRoad(int x, int y)
-{
-    txSetColor(RGB (100, 0, 0));
-    txSetFillColor(RGB (100, 0, 0));
-    txRectangle(x - SHIRINA_OBJ, y - SHIRINA_OBJ, x + SHIRINA_OBJ, y + SHIRINA_OBJ);
-}
+//const HDC buttonofftexture = tx
+//&buttonofftexture
+
+
+
+
 
 int main()
 {
@@ -28,18 +22,15 @@ int main()
     double pictureX;
     double pictureY;
 
-    int picsNumber = 2000;
-
     //Init
-    kartinka pics[picsNumber];
-    for (int nomer = 0; nomer < picsNumber; nomer++)
+    kartinka pics[PICS_NUMBER];
+    for (int nomer = 0; nomer < PICS_NUMBER; nomer++)
     {
         pics[nomer].picture = NULL;
         pics[nomer].risovat = false;
     }
 
     massButt();
-    HDC pic;
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -52,18 +43,18 @@ int main()
         txSelectFont("Times New Roman", 25);
         for (int Button_number = 0; Button_number < KOLICHESTVO_KNOPOK; Button_number++)
         {
-            dButton(b[Button_number]);
-          
+            dButton(knopki[Button_number]);
+
             //Saving pic into buffer
             if (txMouseButtons() & 1
-            && txMouseX() >= b[Button_number].x
-            && txMouseX() <= b[Button_number].x + SHIRINA_KNOPKI
-            && txMouseY() >= b[Button_number].y
-            && txMouseY() <= b[Button_number].y + VISOTA_KNOPKI)
+            && txMouseX() >= knopki[Button_number].x
+            && txMouseX() <= knopki[Button_number].x + SHIRINA_KNOPKI
+            && txMouseY() >= knopki[Button_number].y
+            && txMouseY() <= knopki[Button_number].y + VISOTA_KNOPKI)
             {
-                for (int nomer = nomer_kartinki; nomer < picsNumber; nomer++)
+                for (int nomer = nomer_kartinki; nomer < PICS_NUMBER; nomer++)
                 {
-                    pics[nomer].picture = b[Button_number].kartinka;
+                    pics[nomer].picture = knopki[Button_number].kartinka;
                 }
             }
         }
@@ -92,10 +83,10 @@ int main()
                 pics[nomer_kartinki].risovat = true;
             }
 
-            txSleep (10);
+            //txSleep (10);
         }
 
-        for (int nomer = 0; nomer < picsNumber; nomer++)
+        for (int nomer = 0; nomer < PICS_NUMBER; nomer++)
         {
             if (pics[nomer].risovat)
             {
@@ -104,13 +95,35 @@ int main()
             }
         }
 
+        if (txMouseButtons() &2)
+        {
+            for (int nomer = 0; nomer < nomer_kartinki; nomer++)
+            {
+                if (pics[nomer].x >= txMouseX() - SHIRINA_OBJ &&
+                    pics[nomer].x <= txMouseX() + SHIRINA_OBJ &&
+                    pics[nomer].y >= txMouseY() - SHIRINA_OBJ &&
+                    pics[nomer].y <= txMouseY() + SHIRINA_OBJ)
+                {
+                  pics[nomer].risovat = false;
+                  pics[nomer].picture = NULL;
+                  //nomer_kartinki = nomer - 1;
+                  txSleep (5);
+                }
+            }
+        }
+
         txSleep (10);
         txEnd();
     }
 
-    for (int nomer = 0; nomer < picsNumber; nomer++)
+    for (int nomer = 0; nomer < PICS_NUMBER; nomer++)
     {
         txDeleteDC (pics[nomer].picture);
+    }
+
+    for (int nomer = 0; nomer < KOLICHESTVO_KNOPOK; nomer++)
+    {
+          txDeleteDC(knopki[nomer].kartinka);
     }
     return 0;
 }

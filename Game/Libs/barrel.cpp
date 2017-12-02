@@ -5,7 +5,7 @@ struct Barrel
 {
     double x, y;
     int taken;
-    HDC texture;
+    HDC *texture;
 };
 
 void drawBarrel(Barrel b)
