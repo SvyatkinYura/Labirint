@@ -1,5 +1,7 @@
 #include <iostream>
 #include <math.h>
+#include <fstream>
+#include <string>
 #include "Libs\\TXLib.h"
 #include "Libs\\wall.cpp"
 #include "Libs\\Menu.cpp"
@@ -8,9 +10,24 @@
 #include "Libs\\const.cpp"
 
 
+using namespace std;
 //const HDC buttonofftexture = tx
 //&buttonofftexture
 
+void saveMassive(kartinka* KART1, int nomer_kartinki)
+{
+    ofstream save("save.txt");
+
+    for(int i = 0; i< nomer_kartinki; i++)
+    {
+        if (KART1[i].risovat)
+        {
+            save << /*KART1[i].adress << "," <<*/ KART1[i].x << "," << KART1[i].y << endl;
+        }
+    }
+
+    save.close();
+}
 
 
 
@@ -116,6 +133,7 @@ int main()
         txEnd();
     }
 
+    saveMassive(pics, nomer_kartinki);
     for (int nomer = 0; nomer < PICS_NUMBER; nomer++)
     {
         txDeleteDC (pics[nomer].picture);
