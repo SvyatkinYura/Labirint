@@ -28,6 +28,7 @@ int main()
     char *dirname = "Levels\\";
     printf("%s\n", dirname);
     int x = 0;
+    רעו nomer = 0ז
 
     if ((mydir = opendir (dirname)) != NULL)
     {
@@ -38,11 +39,12 @@ int main()
                 txSetColor(TX_BLACK);
                 txRectangle(x, 0, x + 200, 100);
                 txTextOut(x, 0, filename->d_name);
+
+                files[nomer] = {100,200,x,y};
+    pics[0] = {280, 120, 40, 40, txLoadImage("Pictures\\barrel.bmp"), true};
+
+                nomer++;
                 x = x + 200;
-                //printf("%s\n", filename->d_name);
-                /*createLevel(l0, filename->d_name);
-                playLevel(l0);
-                destroyLevel(l0);*/
             }
         }
         closedir (mydir);
